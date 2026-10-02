@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f2e9">
+  <title>Goodlist - Food Ingredient Analyzer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="Goodlist home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20v-8"/><path d="M12 14c-5.2 0-7.5-2.8-7.5-7.5C9.2 6.5 12 8.8 12 14Z"/><path d="M12 11c0-4 2.1-6.2 6.8-6.2 0 4.7-2.3 6.8-6.8 6.8"/></svg>
+        </span>
+        <span class="brand-name">goodlist</span>
+      </a>
+      <div class="top-note"><span class="live-dot" aria-hidden="true"></span> Your label-reading companion</div>
+    </header>
+
+    <main>
+      <section class="intro" aria-labelledby="page-title">
+        <div>
+          <div class="eyebrow">Ingredient intelligence</div>
+          <h1 id="page-title">A little more clarity<br>in every bite.</h1>
+          <p>Unpack the label. Understand what's really inside.</p>
+        </div>
+        <div class="privacy">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="4" y="8" width="12" height="9" rx="2"/><path d="M7 8V5.8a3 3 0 0 1 6 0V8"/><path d="m8.5 12 1 1 2-2"/></svg>
+          Ingredient lists aren't saved
+        </div>
+      </section>
+
+      <section class="workspace" aria-label="Ingredient analysis workspace">
+        <form class="panel input-panel" id="analyzer-form">
+          <div class="panel-heading">
+            <h2>Read a food label</h2>
+            <span class="step">01 / INPUT</span>
+          </div>
+          <label class="field-label" for="product-name">Search a packaged food</label>
+          <div class="search-row">
+            <input class="product-input" id="product-name" name="product-name" type="text" placeholder="Try a brand and product, e.g. Oreo cookies" autocomplete="off" maxlength="120">
+            <button class="search-button" type="button" id="search-button">Find product</button>
+          </div>
+          <p class="search-hint">Choose the matching product to load its listed ingredients. Search data comes from Open Food Facts.</p>
+          <div id="product-search-results" class="product-search-results" aria-live="polite"></div>
+          <label class="field-label" for="ingredients">Or paste the package ingredients</label>
+          <textarea id="ingredients" name="ingredients" required maxlength="12000" aria-describedby="input-hint" placeholder="Paste the ingredients exactly as they appear on the package..."></textarea>
+          <div class="input-hint" id="input-hint">
+            <span>Separate ingredients with commas.</span>
+            <button class="text-button" type="button" id="sample-button">Try a sample</button>
+          </div>
+          <button class="analyze-button" type="submit" id="analyze-button">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5"/><path d="m13 13 4 4M8.5 6v5M6 8.5h5"/></svg>
+            Analyze ingredients
+          </button>
+          <p class="below-button">No account needed. Your ingredients aren't stored.</p>
+        </form>
+
+        <section class="panel results-panel" aria-label="Ingredient analysis results" aria-live="polite">
+          <div id="results-content">
+            <div class="empty-state">
+              <div>
+                <div class="empty-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h8l4 4v14H7z"/><path d="M15 3v5h5M10 13h6M10 17h6"/></svg></div>
+                <h3>Your label, made clearer.</h3>
+                <p>Add an ingredients list to see common allergens, additives, and things worth a closer look.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <p class="footnote">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="10" cy="10" r="7.5"/><path d="M10 9v5M10 6.3v.2"/></svg>
+        Goodlist is an informational aid, not medical advice. Ingredient names and labeling rules vary; always check the package and consult a qualified professional about allergies or health concerns.
+      </p>
+      <footer class="footer"><span><strong>goodlist</strong> &nbsp; Know your ingredients.</span><span>Built for more informed everyday choices.</span></footer>
+    </main>
+  </div>
+</body>
+</html>
